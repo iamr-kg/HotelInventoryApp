@@ -1,0 +1,35 @@
+
+<h3 align = "center">Select a room type<h3>
+    <div>
+        <input #button type = "button" name="addRoom" value="Add Room" id="addRoom">
+    </div>
+    <div align = "center">
+        <input type ="radio" id ="roomType"  value = "All" [(ngModel)] ="selectedRoomType"><label>All</label>
+        <input type ="radio" id ="roomType" value = "Standard" [(ngModel)] ="selectedRoomType"><label>Standard</label>
+        <input type ="radio" id ="roomType" value = "Delux" [(ngModel)] ="selectedRoomType"><label>Delux</label>
+        <input type ="radio" id ="roomType" value = "Suite"  [(ngModel)] ="selectedRoomType"><label>Suite</label>
+    </div>
+    <table class = "table">
+        <tr>
+            <th>Room No</th>
+            <th>Room Type</th>
+            <th>Amenities</th>
+            <th>isAvailable</th>
+            <th>Select</th>
+        </tr>
+        <tr *ngFor = "let item of (allRoom$ | async)">
+            <ng-container *ngIf = "selectedRoomType == 'All'|| item.roomType == selectedRoomType">
+            <td>{{item.roomNo}}</td>
+            <td>{{item.roomType}}</td>
+            <td>{{item.amenities | titlecase}}</td>
+            <td>{{item.isAvailable}}</td>
+            <td><button (click) = "roomSelect(item)">Select</button></td>
+        </ng-container>
+        </tr>
+    </table>
+    <app-room-display *ngIf="selectedRoom" [DiplayRoom]="selectedRoom" (prevRoomEmiter)="prevRoomEmmited($event)"></app-room-display>
+    <div *ngIf="prevRoom" align = "center"> The previous room was:<br />
+       Type: {{prevRoom.roomType}}<br />
+       Price: {{prevRoom.price}}<br />
+       Rating: {{prevRoom.rating}}
+    </div>

@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef, AfterViewInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'HotelInventoryApp';
+export class AppComponent{
+
 }

@@ -1,0 +1,12 @@
+.table{
+    background-color :aliceblue;
+}
+
+th{
+    background-color : blue;
+}
+
+td{
+   background-color: cyan;
+   font-size: medium;
+}

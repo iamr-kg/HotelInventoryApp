@@ -1,0 +1,17 @@
+<table class = "table">
+    <tr>
+        <th>Employee ID</th>
+        <th>Name</th>
+        <th>Salary</th>
+        <th>Address</th>
+    </tr>
+    <tr *ngFor = "let item of employeeList">
+        <ng-container *ngIf = "employeeList">
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.salary | currency}}</td>
+        <td>{{item.address}}</td>
+    </ng-container>
+    </tr>
+</table>
+
